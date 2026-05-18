@@ -1,0 +1,28 @@
+@import "tailwindcss";
+
+@theme {
+  --color-ink: #172124;
+  --color-ink-soft: #405257;
+  --color-paper: #f7f4ee;
+  --color-panel: #e9eee9;
+  --color-copper: #b44f32;
+  --color-rust: #c25f3c;
+  --color-teal: #1f6a7a;
+  --font-sans: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+}
+
+@layer base {
+  html {
+    min-width: 320px;
+    background: #f7f4ee;
+  }
+
+  body {
+    min-height: 100vh;
+    background:
+      linear-gradient(120deg, rgba(32, 88, 104, 0.12), transparent 38%),
+      linear-gradient(160deg, rgba(205, 85, 52, 0.14), transparent 42%),
+      #f7f4ee;
+    color: #172124;
+  }
+}

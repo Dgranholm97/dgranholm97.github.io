@@ -1,0 +1,33 @@
+---
+interface Props {
+  items: string[];
+}
+
+const { items } = Astro.props;
+---
+
+<aside
+  class="relative grid min-h-[360px] content-end overflow-hidden rounded-lg border border-ink/15 bg-panel shadow-[0_26px_80px_rgba(27,44,50,0.14)] sm:min-h-[460px]"
+  aria-label="Portfolio focus areas"
+>
+  <div
+    class="absolute inset-x-8 top-10 bottom-30 grid place-items-center"
+    aria-hidden="true"
+  >
+    <div class="absolute aspect-square w-[min(88%,360px)] rounded-full border border-ink/35"></div>
+    <div class="absolute aspect-square w-[min(58%,230px)] rounded-full border border-copper/55"></div>
+    <div class="absolute aspect-square w-21 rounded-full bg-ink"></div>
+    <div class="absolute aspect-square w-4.5 translate-x-33 -translate-y-19 rounded-full bg-teal"></div>
+    <div class="absolute aspect-square w-3 -translate-x-21.5 translate-y-24.5 rounded-full bg-rust"></div>
+  </div>
+
+  <ul class="relative grid gap-2.5 p-7">
+    {
+      items.map((item) => (
+        <li class="flex min-h-12 items-center rounded-lg bg-paper/85 px-4 font-bold text-[#243337] shadow-[0_10px_30px_rgba(23,33,36,0.08)]">
+          {item}
+        </li>
+      ))
+    }
+  </ul>
+</aside>

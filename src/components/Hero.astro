@@ -1,0 +1,49 @@
+---
+import ButtonLink from './ButtonLink.astro';
+import FocusPanel from './FocusPanel.astro';
+
+interface Action {
+  href: string;
+  label: string;
+  variant?: 'primary' | 'secondary';
+}
+
+interface Props {
+  eyebrow: string;
+  title: string;
+  body: string;
+  actions: Action[];
+  focusAreas: string[];
+}
+
+const { eyebrow, title, body, actions, focusAreas } = Astro.props;
+---
+
+<section
+  class="grid w-full max-w-6xl items-center gap-9 md:grid-cols-[minmax(0,1.05fr)_minmax(320px,0.95fr)] md:gap-12"
+  aria-labelledby="intro-title"
+>
+  <div>
+    <p class="mb-4 text-[0.82rem] font-extrabold uppercase tracking-[0.14em] text-copper">
+      {eyebrow}
+    </p>
+    <h1
+      id="intro-title"
+      class="max-w-[10ch] text-[clamp(3.2rem,18vw,5.8rem)] font-extrabold leading-[0.9] tracking-normal text-[#15242a] md:text-[clamp(3.5rem,12vw,7.6rem)]"
+    >
+      {title}
+    </h1>
+    <p class="mt-7 max-w-2xl text-lg leading-8 text-ink-soft">
+      {body}
+    </p>
+    <div class="mt-8 flex flex-wrap gap-3.5" aria-label="Primary links">
+      {
+        actions.map((action) => (
+          <ButtonLink href={action.href} label={action.label} variant={action.variant} />
+        ))
+      }
+    </div>
+  </div>
+
+  <FocusPanel items={focusAreas} />
+</section>
