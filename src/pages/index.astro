@@ -1,17 +1,56 @@
 ---
 import Hero from '../components/Hero.astro';
+import LearningSection from '../components/LearningSection.astro';
+import ProjectsSection from '../components/ProjectsSection.astro';
+import SiteHeader from '../components/SiteHeader.astro';
 import BaseLayout from '../layouts/BaseLayout.astro';
-import { hero } from '../data/home';
+import { hero, homeIntro, siteNav } from '../data/site';
+import { learningEntries, learningIntro } from '../data/learning';
+import { projects, projectsIntro } from '../data/projects';
+
+const learningPreview = learningEntries.slice(0, 2);
+const projectPreview = projects.slice(0, 3);
 ---
 
 <BaseLayout title="Dylan Granholm" description="Portfolio site for Dylan Granholm.">
-  <main class="grid min-h-screen place-items-start px-4 py-8 sm:px-6 sm:py-12 md:place-items-center">
-    <Hero
-      eyebrow={hero.eyebrow}
-      title={hero.title}
-      body={hero.body}
-      actions={hero.actions}
-      focusAreas={hero.focusAreas}
+  <SiteHeader items={siteNav} />
+  <main>
+    <div class="mx-auto grid min-h-[calc(100vh-73px)] max-w-6xl place-items-center px-4 py-12 sm:px-6 sm:py-16">
+      <Hero
+        eyebrow={hero.eyebrow}
+        title={hero.title}
+        body={hero.body}
+        actions={hero.actions}
+        focusAreas={hero.focusAreas}
+      />
+    </div>
+
+    <section class="mx-auto max-w-6xl px-4 py-16 sm:px-6 sm:py-20" aria-labelledby="structure-title">
+      <div class="grid gap-8 lg:grid-cols-[0.8fr_1.2fr] lg:items-end">
+        <div>
+          <p class="mb-3 text-[0.78rem] font-extrabold uppercase tracking-[0.14em] text-copper">
+            {homeIntro.eyebrow}
+          </p>
+          <h2 id="structure-title" class="text-4xl font-extrabold leading-tight text-ink sm:text-5xl">
+            {homeIntro.title}
+          </h2>
+        </div>
+        <p class="text-lg leading-8 text-ink-soft">{homeIntro.body}</p>
+      </div>
+    </section>
+
+    <LearningSection
+      eyebrow={learningIntro.eyebrow}
+      title="Recent learning threads"
+      body="A preview of the active study areas. The full learning page can grow into notes, experiments, diagrams, and progress updates."
+      items={learningPreview}
+    />
+
+    <ProjectsSection
+      eyebrow={projectsIntro.eyebrow}
+      title="Featured project tracks"
+      body="Each project card can become a case study with build context, implementation notes, evidence, lessons, and next steps."
+      items={projectPreview}
     />
   </main>
 </BaseLayout>

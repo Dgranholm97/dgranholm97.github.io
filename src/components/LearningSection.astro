@@ -1,0 +1,33 @@
+---
+import SectionIntro from './SectionIntro.astro';
+import LearningEntryCard from './LearningEntryCard.astro';
+
+interface LearningItem {
+  period: string;
+  title: string;
+  status: string;
+  summary: string;
+  skills: readonly string[];
+}
+
+interface Props {
+  eyebrow: string;
+  title: string;
+  body: string;
+  items: readonly LearningItem[];
+}
+
+const { eyebrow, title, body, items } = Astro.props;
+---
+
+<section id="learning" class="scroll-mt-24 py-20 sm:py-24" aria-labelledby="learning-title">
+  <div class="mx-auto grid max-w-6xl gap-10 px-4 sm:px-6 lg:grid-cols-[0.85fr_1.15fr]">
+    <div>
+      <SectionIntro eyebrow={eyebrow} title={title} body={body} titleId="learning-title" />
+    </div>
+
+    <div class="grid gap-4">
+      {items.map((item) => <LearningEntryCard entry={item} />)}
+    </div>
+  </div>
+</section>

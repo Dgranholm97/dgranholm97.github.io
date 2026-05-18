@@ -1,0 +1,32 @@
+---
+interface NavItem {
+  href: string;
+  label: string;
+}
+
+interface Props {
+  items: readonly NavItem[];
+}
+
+const { items } = Astro.props;
+---
+
+<header class="sticky top-0 z-20 border-b border-ink/10 bg-paper/85 backdrop-blur-md">
+  <div class="mx-auto flex max-w-6xl flex-wrap items-center justify-between gap-3 px-4 py-4 sm:flex-nowrap sm:gap-5 sm:px-6">
+    <a class="text-sm font-extrabold uppercase tracking-[0.14em] text-ink no-underline" href="#">
+      Dylan Granholm
+    </a>
+    <nav class="order-2 flex w-full items-center justify-between gap-1 sm:order-none sm:w-auto sm:justify-start" aria-label="Primary navigation">
+      {
+        items.map((item) => (
+          <a
+            class="rounded-lg px-2 py-2 text-sm font-bold text-ink-soft no-underline transition hover:bg-ink/8 hover:text-ink focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-teal sm:px-3"
+            href={item.href}
+          >
+            {item.label}
+          </a>
+        ))
+      }
+    </nav>
+  </div>
+</header>
