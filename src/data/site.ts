@@ -20,7 +20,7 @@ export const siteNav = [
 export const hero = {
   eyebrow: 'Robotics learning lab',
   title: 'Dylan Granholm',
-  body: 'A portfolio for learning robotics in public: the experiments, build notes, failures, repairs, and projects that turn theory into working machines.',
+  body: 'Learning robotics in public through build notes, experiments, simulations, and project case studies.',
   actions: [
     {
       href: '/learning/',
@@ -40,11 +40,22 @@ export const hero = {
   ],
 } as const;
 
-export const homeIntro = {
-  eyebrow: 'Portfolio structure',
-  title: 'Built around evidence, not just finished demos',
-  body: 'The site separates learning notes from project case studies so it can show both the finished artifacts and the thinking that produced them.',
-} as const;
+export const homePaths = [
+  {
+    eyebrow: 'Learning',
+    title: 'Follow the progress',
+    body: 'Notes, experiments, concepts, and debugging sessions that show how the robotics foundation is developing over time.',
+    href: '/learning/',
+    cta: 'Open learning log',
+  },
+  {
+    eyebrow: 'Projects',
+    title: 'Explore the builds',
+    body: 'Case-study pages for robotics projects, including goals, stack, evidence, lessons, and next steps.',
+    href: '/projects/',
+    cta: 'View projects',
+  },
+] as const;
 
 export const about = {
   eyebrow: 'About',

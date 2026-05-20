@@ -1,15 +1,8 @@
 ---
 import Hero from '../components/Hero.astro';
-import LearningSection from '../components/LearningSection.astro';
-import ProjectsSection from '../components/ProjectsSection.astro';
 import SiteHeader from '../components/SiteHeader.astro';
 import BaseLayout from '../layouts/BaseLayout.astro';
-import { hero, homeIntro, siteNav } from '../data/site';
-import { learningEntries, learningIntro } from '../data/learning';
-import { projects, projectsIntro } from '../data/projects';
-
-const learningPreview = learningEntries.slice(0, 2);
-const projectPreview = projects.slice(0, 3);
+import { hero, homePaths, siteNav } from '../data/site';
 ---
 
 <BaseLayout title="Dylan Granholm" description="Portfolio site for Dylan Granholm.">
@@ -25,32 +18,31 @@ const projectPreview = projects.slice(0, 3);
       />
     </div>
 
-    <section class="mx-auto max-w-6xl px-4 py-16 sm:px-6 sm:py-20" aria-labelledby="structure-title">
-      <div class="grid gap-8 lg:grid-cols-[0.8fr_1.2fr] lg:items-end">
-        <div>
-          <p class="mb-3 text-[0.78rem] font-extrabold uppercase tracking-[0.14em] text-copper">
-            {homeIntro.eyebrow}
-          </p>
-          <h2 id="structure-title" class="text-4xl font-extrabold leading-tight text-ink sm:text-5xl">
-            {homeIntro.title}
-          </h2>
-        </div>
-        <p class="text-lg leading-8 text-ink-soft">{homeIntro.body}</p>
+    <section class="mx-auto max-w-6xl px-4 pb-20 sm:px-6 sm:pb-24" aria-labelledby="next-title">
+      <div class="max-w-3xl">
+        <p class="mb-3 text-[0.78rem] font-extrabold uppercase tracking-[0.14em] text-copper">
+          Start here
+        </p>
+        <h2 id="next-title" class="text-4xl font-extrabold leading-tight text-ink sm:text-5xl">
+          Choose a path through the lab
+        </h2>
+      </div>
+
+      <div class="mt-8 grid gap-4 md:grid-cols-2">
+        {
+          homePaths.map((path) => (
+            <a
+              class="group rounded-lg border border-ink/12 bg-panel/80 p-6 text-ink no-underline shadow-[0_18px_50px_rgba(27,44,50,0.08)] transition hover:-translate-y-1 hover:border-teal/40 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-teal"
+              href={path.href}
+            >
+              <p class="text-sm font-extrabold uppercase tracking-[0.12em] text-copper">{path.eyebrow}</p>
+              <h3 class="mt-3 text-3xl font-extrabold leading-tight">{path.title}</h3>
+              <p class="mt-4 leading-7 text-ink-soft">{path.body}</p>
+              <span class="mt-6 inline-flex font-extrabold text-teal group-hover:text-ink">{path.cta}</span>
+            </a>
+          ))
+        }
       </div>
     </section>
-
-    <LearningSection
-      eyebrow={learningIntro.eyebrow}
-      title="Recent learning threads"
-      body="A preview of the active study areas. The full learning page can grow into notes, experiments, diagrams, and progress updates."
-      items={learningPreview}
-    />
-
-    <ProjectsSection
-      eyebrow={projectsIntro.eyebrow}
-      title="Featured project tracks"
-      body="Each project card can become a case study with build context, implementation notes, evidence, lessons, and next steps."
-      items={projectPreview}
-    />
   </main>
 </BaseLayout>
