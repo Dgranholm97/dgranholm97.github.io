@@ -3,8 +3,8 @@
 @theme {
   --color-ink: #172124;
   --color-ink-soft: #405257;
-  --color-paper: #f7f4ee;
-  --color-panel: #e9eee9;
+  --color-paper: #f4f7f3;
+  --color-panel: #e8efeb;
   --color-copper: #b44f32;
   --color-rust: #c25f3c;
   --color-teal: #1f6a7a;
@@ -14,20 +14,62 @@
 @layer base {
   html {
     min-width: 320px;
-    background: #f7f4ee;
+    background: #f4f7f3;
     scroll-behavior: smooth;
   }
 
   body {
     min-height: 100vh;
     background:
-      linear-gradient(120deg, rgba(32, 88, 104, 0.12), transparent 38%),
-      linear-gradient(160deg, rgba(205, 85, 52, 0.14), transparent 42%),
-      #f7f4ee;
+      linear-gradient(rgba(31, 106, 122, 0.055) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(31, 106, 122, 0.045) 1px, transparent 1px),
+      linear-gradient(rgba(23, 33, 36, 0.03) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(23, 33, 36, 0.025) 1px, transparent 1px),
+      linear-gradient(120deg, rgba(31, 106, 122, 0.1), transparent 42%),
+      linear-gradient(160deg, rgba(180, 79, 50, 0.09), transparent 46%),
+      #f4f7f3;
+    background-size:
+      80px 80px,
+      80px 80px,
+      16px 16px,
+      16px 16px,
+      auto,
+      auto,
+      auto;
     color: #172124;
   }
 
   ::selection {
     background: rgba(31, 106, 122, 0.22);
+  }
+}
+
+@layer components {
+  .sketch-card {
+    position: relative;
+    border: 1px solid rgba(23, 33, 36, 0.18);
+    background:
+      linear-gradient(135deg, rgba(255, 255, 255, 0.72), rgba(255, 255, 255, 0.34)),
+      repeating-linear-gradient(0deg, transparent 0 27px, rgba(31, 106, 122, 0.045) 28px),
+      #f4f7f3;
+    box-shadow:
+      0 18px 48px rgba(27, 44, 50, 0.1),
+      3px 4px 0 rgba(23, 33, 36, 0.06);
+  }
+
+  .sketch-card::before {
+    position: absolute;
+    inset: 8px;
+    pointer-events: none;
+    content: "";
+    border: 1px dashed rgba(23, 33, 36, 0.12);
+    border-radius: 6px;
+  }
+
+  .draft-label {
+    font-family:
+      ui-monospace, "SFMono-Regular", "SF Mono", Consolas, "Liberation Mono", Menlo, monospace;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
   }
 }

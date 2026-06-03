@@ -1,0 +1,36 @@
+---
+interface Props {
+  src: string;
+  alt: string;
+  label: string;
+  note?: string;
+  className?: string;
+  imageClassName?: string;
+  objectPosition?: string;
+}
+
+const {
+  src,
+  alt,
+  label,
+  note,
+  className = '',
+  imageClassName = 'h-full min-h-64 object-cover',
+  objectPosition = 'center',
+} = Astro.props;
+---
+
+<figure class:list={['sketch-card overflow-hidden rounded-lg', className]}>
+  <img
+    class:list={['relative z-0 w-full mix-blend-multiply', imageClassName]}
+    src={src}
+    alt={alt}
+    style={`object-position: ${objectPosition}`}
+    loading="lazy"
+    decoding="async"
+  />
+  <figcaption class="absolute left-4 top-4 z-10 rounded-lg border border-ink/15 bg-paper/85 px-3 py-2 backdrop-blur-sm">
+    <p class="draft-label text-xs font-extrabold text-copper">{label}</p>
+    {note && <p class="mt-1 text-sm font-bold text-ink-soft">{note}</p>}
+  </figcaption>
+</figure>

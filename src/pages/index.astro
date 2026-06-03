@@ -21,7 +21,7 @@ import { hero, homePaths, siteNav } from '../data/site';
     <section class="mx-auto max-w-6xl px-4 pb-20 sm:px-6 sm:pb-24" aria-labelledby="next-title">
       <div class="max-w-3xl">
         <p class="mb-3 text-[0.78rem] font-extrabold uppercase tracking-[0.14em] text-copper">
-          Start here
+          Lab notebook
         </p>
         <h2 id="next-title" class="text-4xl font-extrabold leading-tight text-ink sm:text-5xl">
           Choose a path through the lab
@@ -32,13 +32,15 @@ import { hero, homePaths, siteNav } from '../data/site';
         {
           homePaths.map((path) => (
             <a
-              class="group rounded-lg border border-ink/12 bg-panel/80 p-6 text-ink no-underline shadow-[0_18px_50px_rgba(27,44,50,0.08)] transition hover:-translate-y-1 hover:border-teal/40 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-teal"
+              class="sketch-card group rounded-lg p-6 text-ink no-underline transition hover:-translate-y-1 hover:border-teal/40 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-teal"
               href={path.href}
             >
-              <p class="text-sm font-extrabold uppercase tracking-[0.12em] text-copper">{path.eyebrow}</p>
-              <h3 class="mt-3 text-3xl font-extrabold leading-tight">{path.title}</h3>
-              <p class="mt-4 leading-7 text-ink-soft">{path.body}</p>
-              <span class="mt-6 inline-flex font-extrabold text-teal group-hover:text-ink">{path.cta}</span>
+              <div class="relative">
+                <p class="draft-label text-sm font-extrabold text-copper">{path.eyebrow}</p>
+                <h3 class="mt-3 text-3xl font-extrabold leading-tight">{path.title}</h3>
+                <p class="mt-4 leading-7 text-ink-soft">{path.body}</p>
+                <span class="mt-6 inline-flex font-extrabold text-teal group-hover:text-ink">{path.cta}</span>
+              </div>
             </a>
           ))
         }

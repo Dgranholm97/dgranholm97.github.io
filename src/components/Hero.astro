@@ -24,7 +24,7 @@ const { eyebrow, title, body, actions, focusAreas } = Astro.props;
   aria-labelledby="intro-title"
 >
   <div>
-    <p class="mb-4 text-[0.82rem] font-extrabold uppercase tracking-[0.14em] text-copper">
+    <p class="draft-label mb-4 text-[0.82rem] font-extrabold text-copper">
       {eyebrow}
     </p>
     <h1
@@ -33,7 +33,7 @@ const { eyebrow, title, body, actions, focusAreas } = Astro.props;
     >
       {title}
     </h1>
-    <p class="mt-7 max-w-2xl text-lg leading-8 text-ink-soft">
+    <p class="mt-7 max-w-2xl border-l-2 border-teal/45 pl-5 text-lg leading-8 text-ink-soft">
       {body}
     </p>
     <div class="mt-8 flex flex-wrap gap-3.5" aria-label="Primary links">

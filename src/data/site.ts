@@ -18,7 +18,7 @@ export const siteNav = [
 ] as const;
 
 export const hero = {
-  eyebrow: 'Robotics learning lab',
+  eyebrow: 'Robotics lab sketchbook',
   title: 'Dylan Granholm',
   body: 'Learning robotics in public through build notes, experiments, simulations, and project case studies.',
   actions: [

@@ -1,4 +1,5 @@
 ---
+import SketchFigure from '../../components/SketchFigure.astro';
 import SiteHeader from '../../components/SiteHeader.astro';
 import { projects } from '../../data/projects';
 import { siteNav } from '../../data/site';
@@ -22,7 +23,7 @@ const { project } = Astro.props;
         <a class="text-sm font-extrabold text-teal no-underline hover:text-ink" href="/projects/">
           Back to projects
         </a>
-        <div class="mt-6 grid gap-8 lg:grid-cols-[1fr_0.42fr] lg:items-end">
+        <div class="mt-6 grid gap-8 lg:grid-cols-[1fr_0.48fr] lg:items-end">
           <div>
             <p class="mb-4 text-[0.82rem] font-extrabold uppercase tracking-[0.14em] text-copper">
               {project.stage}
@@ -34,11 +35,26 @@ const { project } = Astro.props;
               {project.summary}
             </p>
           </div>
-          <div class="rounded-lg border border-ink/12 bg-panel/80 p-5">
-            <h2 class="text-sm font-extrabold uppercase tracking-[0.12em] text-copper">Stack</h2>
-            <ul class="mt-4 flex flex-wrap gap-2">
-              {project.stack.map((item) => <li class="rounded-full bg-ink px-3 py-1 text-sm font-bold text-paper">{item}</li>)}
-            </ul>
+          <div class="grid gap-4">
+            {
+              project.sketch && (
+                <SketchFigure
+                  src={project.sketch.src}
+                  alt={project.sketch.alt}
+                  label={project.sketch.label}
+                  note={project.stage}
+                  className="min-h-72"
+                  imageClassName="h-full min-h-72 object-cover"
+                  objectPosition={project.sketch.position ?? 'center'}
+                />
+              )
+            }
+            <div class="rounded-lg border border-ink/12 bg-panel/80 p-5">
+              <h2 class="text-sm font-extrabold uppercase tracking-[0.12em] text-copper">Stack</h2>
+              <ul class="mt-4 flex flex-wrap gap-2">
+                {project.stack.map((item) => <li class="rounded-full bg-ink px-3 py-1 text-sm font-bold text-paper">{item}</li>)}
+              </ul>
+            </div>
           </div>
         </div>
       </header>

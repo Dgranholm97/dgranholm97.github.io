@@ -1,4 +1,5 @@
 ---
+import SketchFigure from './SketchFigure.astro';
 import type { RoboticsCurriculum } from '../data/roboticsCurriculum';
 
 interface Props {
@@ -42,18 +43,28 @@ const statusClasses = {
       </p>
     </div>
 
-    <aside class="rounded-lg border border-ink/12 bg-panel/80 p-5 shadow-[0_18px_50px_rgba(27,44,50,0.08)]">
-      <dl class="grid gap-4">
-        <div>
-          <dt class="text-sm font-extrabold uppercase tracking-[0.12em] text-copper">Timeline</dt>
-          <dd class="mt-1 text-2xl font-extrabold text-ink">{curriculum.targetTimeline}</dd>
-        </div>
-        <div>
-          <dt class="text-sm font-extrabold uppercase tracking-[0.12em] text-copper">Weekly pace</dt>
-          <dd class="mt-1 text-2xl font-extrabold text-ink">{curriculum.weeklyCommitment}</dd>
-        </div>
-      </dl>
-    </aside>
+    <div class="grid gap-4">
+      <aside class="rounded-lg border border-ink/12 bg-panel/80 p-5 shadow-[0_18px_50px_rgba(27,44,50,0.08)]">
+        <dl class="grid gap-4">
+          <div>
+            <dt class="text-sm font-extrabold uppercase tracking-[0.12em] text-copper">Timeline</dt>
+            <dd class="mt-1 text-2xl font-extrabold text-ink">{curriculum.targetTimeline}</dd>
+          </div>
+          <div>
+            <dt class="text-sm font-extrabold uppercase tracking-[0.12em] text-copper">Weekly pace</dt>
+            <dd class="mt-1 text-2xl font-extrabold text-ink">{curriculum.weeklyCommitment}</dd>
+          </div>
+        </dl>
+      </aside>
+      <SketchFigure
+        src="/images/robot-arm-sketch.png"
+        alt="Hand-drawn engineering sketch of a robotic arm manipulator"
+        label="motion planning sketch"
+        note="manipulation track"
+        className="min-h-64"
+        imageClassName="h-full min-h-64 object-cover"
+      />
+    </div>
   </div>
 
   <div class="mt-10 grid gap-4 lg:grid-cols-[1.1fr_0.9fr]">

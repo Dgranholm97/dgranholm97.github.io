@@ -8,8 +8,27 @@ interface Props {
 const { project } = Astro.props;
 ---
 
-<article class="flex min-h-72 flex-col rounded-lg border border-ink/12 bg-panel/80 p-5 shadow-[0_18px_50px_rgba(27,44,50,0.08)]">
-  <div class="flex flex-col items-start gap-3 xl:flex-row xl:justify-between xl:gap-4">
+<article class="sketch-card flex min-h-72 flex-col overflow-hidden rounded-lg text-ink">
+  {
+    project.sketch && (
+      <div class="relative h-52 overflow-hidden border-b border-ink/10 bg-paper/70">
+        <img
+          class="h-full w-full object-cover opacity-95 mix-blend-multiply"
+          src={project.sketch.src}
+          alt={project.sketch.alt}
+          style={`object-position: ${project.sketch.position ?? 'center'}`}
+          loading="lazy"
+          decoding="async"
+        />
+        <div class="absolute inset-0 bg-gradient-to-t from-panel/65 to-transparent"></div>
+        <p class="draft-label absolute bottom-3 left-4 text-xs font-extrabold text-copper">
+          {project.sketch.label}
+        </p>
+      </div>
+    )
+  }
+
+  <div class="relative flex flex-col items-start gap-3 p-5 pb-0 xl:flex-row xl:justify-between xl:gap-4">
     <h3 class="text-2xl font-extrabold leading-tight text-ink">
       <a class="text-inherit no-underline hover:text-teal focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-teal" href={`/projects/${project.slug}/`}>
         {project.title}
@@ -19,8 +38,8 @@ const { project } = Astro.props;
       {project.stage}
     </span>
   </div>
-  <p class="mt-5 leading-7 text-ink-soft">{project.summary}</p>
-  <ul class="mt-auto flex flex-wrap gap-2 pt-6" aria-label={`${project.title} tags`}>
+  <p class="relative mt-5 px-5 leading-7 text-ink-soft">{project.summary}</p>
+  <ul class="relative mt-auto flex flex-wrap gap-2 p-5 pt-6" aria-label={`${project.title} tags`}>
     {
       project.tags.map((tag) => (
         <li class="rounded-full border border-ink/12 bg-paper px-3 py-1 text-sm font-bold text-ink-soft">
